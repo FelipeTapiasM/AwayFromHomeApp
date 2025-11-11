@@ -1,89 +1,70 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, StatusBar } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
 
 const WelcomeScreen = ({ navigation }) => {
   return (
-    <ImageBackground 
-      source={require('../assets/background.jpg')} // o usar color sólido
-      style={styles.background}
-    >
-      <LinearGradient
-        colors={['rgba(0,0,0,0.4)', 'rgba(0,0,0,0.7)']}
-        style={styles.gradient}
+    <View style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor="#4CAF50" />
+      
+      {/* Logo/Título */}
+      <Text style={styles.title}>AwayFromHomeApp</Text>
+      
+      {/* Subtítulo */}
+      <Text style={styles.subtitle}>
+        Organiza tu tiempo y finanzas
+      </Text>
+      
+      {/* Descripción */}
+      <Text style={styles.description}>
+        Gestiona tus actividades académicas y personales, al mismo tiempo que llevas un registro de tus ingresos y gastos.
+      </Text>
+      
+      {/* Botón principal */}
+      <TouchableOpacity 
+        style={styles.primaryButton}
+        onPress={() => navigation.navigate('Register')}
       >
-        <StatusBar barStyle="light-content" />
-        
-        <View style={styles.container}>
-          {/* Logo/Título */}
-          <Text style={styles.title}>AwayFromHomeApp</Text>
-          
-          {/* Subtítulo */}
-          <Text style={styles.subtitle}>
-            Organiza tu tiempo y finanzas
-          </Text>
-          
-          {/* Descripción */}
-          <Text style={styles.description}>
-            Gestiona tus actividades académicas y personales, al mismo tiempo que llevas un registro de tus ingresos y gastos.
-          </Text>
-          
-          {/* Botón principal */}
-          <TouchableOpacity 
-            style={styles.primaryButton}
-            onPress={() => navigation.navigate('Register')}
-          >
-            <Text style={styles.primaryButtonText}>Comenzar</Text>
-          </TouchableOpacity>
-          
-          {/* Enlace secundario */}
-          <TouchableOpacity 
-            style={styles.secondaryButton}
-            onPress={() => navigation.navigate('Login')}
-          >
-            <Text style={styles.secondaryButtonText}>
-              ¿Ya tienes una cuenta? Iniciar sesión
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </LinearGradient>
-    </ImageBackground>
+        <Text style={styles.primaryButtonText}>Comenzar</Text>
+      </TouchableOpacity>
+      
+      {/* Enlace secundario */}
+      <TouchableOpacity 
+        style={styles.secondaryButton}
+        onPress={() => navigation.navigate('Login')}
+      >
+        <Text style={styles.secondaryButtonText}>
+          ¿Ya tienes una cuenta? Iniciar sesión
+        </Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    width: '100%',
-  },
-  gradient: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 30,
+    backgroundColor: '#f8f9fa',
   },
   title: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: 'white',
+    color: '#2E7D32',
     textAlign: 'center',
     marginBottom: 10,
   },
   subtitle: {
     fontSize: 20,
-    color: 'white',
+    color: '#555',
     textAlign: 'center',
     marginBottom: 20,
     fontWeight: '600',
   },
   description: {
     fontSize: 16,
-    color: 'rgba(255,255,255,0.8)',
+    color: '#666',
     textAlign: 'center',
     marginBottom: 40,
     lineHeight: 22,
@@ -96,6 +77,14 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     width: '100%',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   primaryButtonText: {
     color: 'white',
@@ -106,9 +95,9 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   secondaryButtonText: {
-    color: 'white',
+    color: '#4CAF50',
     fontSize: 16,
-    textDecorationLine: 'underline',
+    fontWeight: '500',
   },
 });
 
